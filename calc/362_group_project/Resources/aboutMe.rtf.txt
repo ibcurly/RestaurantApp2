@@ -1,0 +1,13 @@
+About the Everyday Calculator
+
+Welcome!We offer three calculator types with essential functions for everyday use. We deliver
+accurate computed results that are immediately accessible for the everyday user.Please select
+the following calculators from our Main Menu:
+Basic Calculator includes fundamental mathematical functions such as addition, subtraction,
+multiplication, and division.
+Bill Splitting Calculator features is a tool to share bills and IOUs easily with friends and family,
+so that everyone can see how much they owe.
+Discount Calculator determines the final or discounted price after the percent off or dollar
+amount discount is applied so you can use this calculator when when buying clothes, food,
+groceries, cars, baby goods, homes, toys, electronics, jewelry, books or anything that has a
+percent based sale.;
