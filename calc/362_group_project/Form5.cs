@@ -281,13 +281,13 @@ namespace Calculator
 
         private void save_Click(object sender, EventArgs e) // Project --> name of project's properties --> Settings
         {
-            
-            Properties.Settings.Default.label1 = incomeShowLabel.Text;
-            Properties.Settings.Default.label2 = expenseShowLabel.Text;
-            Properties.Settings.Default.label3 = balanceShowLabel.Text;
+            //_362_group_project.Properties.Settings.Default.label1.
+            //Properties.Settings.Default.label1 = incomeShowLabel.Text;
+            //Properties.Settings.Default.label2 = expenseShowLabel.Text;
+            //Properties.Settings.Default.label3 = balanceShowLabel.Text;
 
-            Properties.Settings.Default.Save();
-            Properties.Settings.Default.Upgrade();
+            _362_group_project.Properties.Settings.Default.Save();
+            _362_group_project.Properties.Settings.Default.Upgrade();
 
             /* save data listview in application */
             // code to write to text file using StreamWriter
@@ -326,9 +326,9 @@ namespace Calculator
             displayListView.View = View.Details;
             displayListView.FullRowSelect = true; // allow to select the full row
 
-            incomeShowLabel.Text = Properties.Settings.Default.label1;
-            expenseShowLabel.Text = Properties.Settings.Default.label2;
-            balanceShowLabel.Text = Properties.Settings.Default.label3;
+            incomeShowLabel.Text = _362_group_project.Properties.Settings.Default.label1;
+            expenseShowLabel.Text = _362_group_project.Properties.Settings.Default.label2;
+            balanceShowLabel.Text = _362_group_project.Properties.Settings.Default.label3;
             
 
             /* retrieve data listview from application */
@@ -361,7 +361,8 @@ namespace Calculator
 
         private void reset_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.Reset(); // this is for total income/expense/balance
+
+            _362_group_project.Properties.Settings.Default.Reset(); // this is for total income/expense/balance
             // need to perform resetting now!
             incomeShowLabel.Text = "0";
             expenseShowLabel.Text = "0";
@@ -418,7 +419,7 @@ namespace Calculator
                         i++;
                     }
                     ws.Columns.AutoFit();
-                    wb.SaveAs(sfd.FileName, XlFileFormat.xlWorkbookDefault, Type.Missing, Type.Missing, false, false, XlSaveAsAccessMode.xlNoChange, XlSaveConflictResolution.xlLocalSessionChanges, Type.Missing, Type.Missing);
+                    wb.SaveAs(sfd.FileName, XlFileFormat.xlExcel7, Type.Missing, Type.Missing, false, false, XlSaveAsAccessMode.xlNoChange, XlSaveConflictResolution.xlLocalSessionChanges, Type.Missing, Type.Missing);
                     app.Quit();
                     MessageBox.Show("Your data has been successfully exported!", "Important Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }

@@ -87,6 +87,27 @@ namespace Calculator
             richTextBox1.SelectionFont = new Font("Arial", 12, FontStyle.Bold);
             richTextBox1.DeselectAll();
             richTextBox1.ReadOnly = true;
+
+            _362_group_project.Database db = new _362_group_project.Database();
+            DataTable table = db.selectQuery("Select * from user");
+
+            string str = "";
+
+            foreach (DataRow dataRow in table.Rows)
+            {
+                foreach (var item in dataRow.ItemArray)
+                {
+                    str += item.ToString();
+                }
+            }
+
+            richTextBox2.Text = str;
+            
+        }
+
+        private void richTextBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
