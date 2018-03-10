@@ -1,0 +1,39 @@
+body{height:100%;
+   width:100%;
+   background-image:url(gg.jpg);/*your background image*/
+   background-repeat:no-repeat;/*we want to have one single image not a repeated one*/
+   background-size:cover;/*this sets the image to fullscreen covering the whole screen*/
+   /*css hack for ie*/
+   filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.gg.jpg',sizingMethod='scale');
+   -ms-filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(src='gg.jpg',sizingMethod='scale')";
+}
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+.fa-youtube {
+  background: #bb0000;
+  color: white;
+}
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+}
