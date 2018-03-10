@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.Data;
+using System.IO;
 
 namespace _362_group_project
 {
@@ -14,7 +15,9 @@ namespace _362_group_project
 
         public Database()
         {
-            myConnection = new SQLiteConnection("Data Source = E:/curts/Github/RestaurantApp2/database.db; New = False");
+            string wanted_path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
+            wanted_path += "/Website/database.db";
+            myConnection = new SQLiteConnection("Data Source =" + wanted_path + "; New = False");
 
         }
 
