@@ -24,6 +24,12 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(15), unique=True)
     email = db.Column(db.String(50), unique=True)
     password = db.Column(db.String(80))
+	
+class Food(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), unique=True)
+    price = db.Column(db.Float)
+    amount = db.Column(db.Integer)
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -39,11 +45,18 @@ class RegisterForm(FlaskForm):
     username = StringField('username', validators=[InputRequired(), Length(min=4, max=15)])
     password = PasswordField('password', validators=[InputRequired(), Length(min=8, max=80)])
 
+class AddFoodForm(FlaskForm):
+    name = StringField('name')
+    price = StringField('price')
+    amount = StringField('amount')
+	
+class QueryFoodForm(FlaskForm):
+    name = StringField('name')
 
 @app.route('/')
 def index():
     return render_template('index.html')
-
+	
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
@@ -75,9 +88,43 @@ def signup():
 
     return render_template('signup.html', form=form)
 
+
+@app.route('/exampleAddFood', methods=['GET', 'POST'])
+def exampleAddFood():
+    form = AddFoodForm()
+
+    if form.validate_on_submit():
+        new_food = Food(name=form.name.data, price=form.price.data, amount=form.amount.data)
+        db.session.add(new_food)
+        db.session.commit()
+
+        return '<h1>Food Added!</h1>'
+
+    return 0 #Return route to something that tells the user that food has been added
+	
+@app.route('/login', methods=['GET', 'POST'])
+def exampleQueryFood():
+    form = QueryFoodForm()
+
+    if form.validate_on_submit():
+        food = Food.query.filter_by(name=form.name.data).first()
+        if food:
+           return 1 #found the food
+
+    return 0 #didnt find food
+
 @app.route('/dashboard')
 @login_required
 def dashboard():
+    new_food = Food(name="chips", price=100, amount=2)
+    db.session.add(new_food)
+    db.session.commit()
+    new_food = Food(name="soda", price=50, amount=5)
+    db.session.add(new_food)
+    db.session.commit()
+    new_food = Food(name="bread", price=700, amount=9)
+    db.session.add(new_food)
+    db.session.commit()
     return render_template('dashboard.html', name=current_user.username)
 
 @app.route('/logout')
