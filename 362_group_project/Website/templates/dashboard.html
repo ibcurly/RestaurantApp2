@@ -1,4 +1,14 @@
-<!DOCTYPE html>
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+{% endblock %}
+
+{% block content %}
 <html>
 
 <head>
@@ -31,7 +41,7 @@
 
 <body>
   <p><a href="C:\Users\Dell\Downloads\bootstrap-4.0.0-dist\game.html"><h3>GAME TIME</h3></a></p>
-  <p><a href="C:\Users\Dell\Downloads\bootstrap-4.0.0-dist\review.html"><h3>LEAVE A MESSGA</h3></a></p>
+  <p><a href="C:\Users\Dell\Downloads\bootstrap-4.0.0-dist\review.html"><h3>LEAVE A MESSGAGE</h3></a></p>
 <h3>  <a href="#" class="fa fa-facebook"></a>
   <a href="#" class="fa fa-twitter"></a>
   <a href="#" class="fa fa-youtube"></a>
@@ -254,11 +264,22 @@
       </div>
       <div class="col-12 mt-4">
         <hr class="accent my-5">
-        <button type="button" class="btn btn-success">Success</button></br>
 
+		<form class="form-review" method="POST" action="/review">
+			{{ form.hidden_tag() }}
+
+			<button class="btn btn-lg btn-primary btn-block" type="submit">SUBMIT</button>
+		</form>
+		
+		
+		
       </div>
     </div>
   </div>
 </body>
 
 </html>
+{% endblock %}
+
+
+

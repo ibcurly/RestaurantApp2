@@ -52,6 +52,9 @@ class AddFoodForm(FlaskForm):
 	
 class QueryFoodForm(FlaskForm):
     name = StringField('name')
+	
+class ReviewForm(FlaskForm):
+    data = StringField('data')
 
 @app.route('/')
 def index():
@@ -112,20 +115,17 @@ def exampleQueryFood():
            return 1 #found the food
 
     return 0 #didnt find food
+	
+@app.route('/review', methods=['GET', 'POST'])
+@login_required
+def review():
+    return render_template('review.html')
 
 @app.route('/dashboard')
 @login_required
 def dashboard():
-    new_food = Food(name="chips", price=100, amount=2)
-    db.session.add(new_food)
-    db.session.commit()
-    new_food = Food(name="soda", price=50, amount=5)
-    db.session.add(new_food)
-    db.session.commit()
-    new_food = Food(name="bread", price=700, amount=9)
-    db.session.add(new_food)
-    db.session.commit()
-    return render_template('dashboard.html', name=current_user.username)
+    form = LoginForm()
+    return render_template('dashboard.html', form=form)
 
 @app.route('/logout')
 @login_required
@@ -135,3 +135,17 @@ def logout():
 
 if __name__ == '__main__':
     app.run(debug=True)
+	
+	
+	
+	
+	
+ # new_food = Food(name="chips", price=100, amount=2)
+# db.session.add(new_food)
+# db.session.commit()
+# new_food = Food(name="soda", price=50, amount=5)
+# db.session.add(new_food)
+# db.session.commit()
+# new_food = Food(name="bread", price=700, amount=9)
+# db.session.add(new_food)
+# db.session.commit()
